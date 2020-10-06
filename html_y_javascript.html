@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"Hola mundo" en HTML + JS v3</title>
+
+</head>
+
+<body>
+
+    <span id="la_caja"></span>
+
+    <script>
+
+        /*
+        pedir un numero
+        corroborar que el numero esta entre 1-9
+        en base a ese numero soltar una cantidad de mensajes
+        fin
+        */
+
+        function iniciemos() {
+
+            var caja = document.getElementById("la_caja");
+            var eme = ["hola",
+                "<br/> ¿Qué tal? ",
+                "Bien, ¿no? <br/>",
+                "Vaya, no respondes.",
+                " Un mal día supongo",
+                "<br/> Pues entonces nada,",
+                " hablamos otro día",
+                "<br/> O no...",
+                "<br/> Adiós."];
+
+            numero = prompt("di un numero del 1-9: ");
+
+            //number.isnan parseint   busca saber si la variable es un numero o no.
+
+            if (numero < 1 || numero > 9 || (Number.isNaN(parseInt(numero)) == true)) {
+                alert("UN NUMERO ENTRE EL 1 Y EL 9!!! la página se recargará" + typeof numero);
+                window.location.reload(true);
+                //recarga de la pagina tras el error
+            } else {
+                for (ini = 0; ini <= numero - 1; ini++) {
+
+                    (function (ini) {
+                        setTimeout(function () {
+                            caja.innerHTML += eme[ini];
+                        }, 1250 * ini);
+                    })(ini);
+                }
+            }
+
+            caja.innerHTML+="fin";
+        }
+
+           /*
+           para retrasar las iteraciones dentro de un bucle ('for' en este caso)
+           se debe usar Immediately-invoked function expression IIFE  
+                            (function () {**algún código aquí**})();
+
+           */
+
+    </script>
+    <script>iniciemos();</script>
+
+</body>
+
+</html>
